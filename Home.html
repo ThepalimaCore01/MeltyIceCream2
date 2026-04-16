@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Melty Ice Cream Store</title>
+<meta name="generator" content="WYSIWYG Web Builder 20 - https://www.wysiwygwebbuilder.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="Melty_Ice_Cream_Store.css" rel="stylesheet">
+<link href="Home.css" rel="stylesheet">
+<script src="jquery-3.7.1.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="wb.carousel.effects.min.js"></script>
+<script src="wb.panel.min.js"></script>
+<script src="wb.stickylayer.min.js"></script>
+<script src="wwb20.min.js"></script>
+<script>
+$(document).ready(function()
+{
+   var Carousel1Opts =
+   {
+      delay: 999999,
+      duration: 1000,
+      easing: 'linear',
+      mode: 'css-animation',
+      direction: '',
+      scalemode: 2,
+      pagination: true,
+      pause: null,
+      start: 0
+   };
+   $("#Carousel1").carouseleffects(Carousel1Opts);
+   $("#Carousel1_back a").click(function()
+   {
+      $('#Carousel1').carouseleffects('prev');
+   });
+   $("#Carousel1_next a").click(function()
+   {
+      $('#Carousel1').carouseleffects('next');
+   });
+   $("#Cart").panel({animate: true, animationDuration: 200, animationEasing: 'linear', dismissible: true, display: 'push', position: 'right'});
+   $("#Adress_Popup").stickylayer({orientation: 9, position: [0, 0], delay: 250});
+   $("#Thank_You").stickylayer({orientation: 9, position: [0, 0], delay: 250});
+});
+</script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) existing.qty += 1;
+    else cart.push({ name, price, qty: 1 });
+    saveCart();
+}
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+}
+
+function updateCart() {
+    const cartDiv = document.getElementById("cartItems");
+    const totalSpan = document.getElementById("total");
+    const countSpan = document.getElementById("cartCount");
+
+    cartDiv.innerHTML = "";
+    let total = 0, count = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        count += item.qty;
+
+        cartDiv.innerHTML += `
+        <div style="margin-bottom:10px;">
+            <strong>${item.name}</strong><br>
+            ₱${item.price}<br>
+            <button onclick="changeQty(${index}, -1)">−</button>
+            ${item.qty}
+            <button onclick="changeQty(${index}, 1)">+</button>
+            <br>
+            <small style="cursor:pointer; text-decoration:underline;" onclick="removeItem(${index})">Remove</small>
+        </div>
+        `;
+    });
+
+    totalSpan.innerText = total;
+    countSpan.innerText = count;
+}
+
+function changeQty(index, delta) {
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) cart.splice(index, 1);
+    saveCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    saveCart();
+}
+
+window.onload = updateCart;
+</script>
+
+</head>
+<body>
+<div id="wb_Shape3">
+<img src="images/img0003.png" id="Shape3" alt="" width="1577" height="2243"></div>
+<div id="wb_Image11">
+<img src="images/Free  Wallpaper, Shape, Pattern Background Images, Ice Cold Water Cool Background Photo Background PNG and Vectors.jpg" id="Image11" alt="" width="1575" height="2799"></div>
+<div id="wb_Shape1">
+<img src="images/img0001.png" id="Shape1" alt="" width="1578" height="101"></div>
+<div id="wb_Shape2">
+<img src="images/img0002.png" id="Shape2" alt="" width="1578" height="339"></div>
+<div id="wb_TextArt1">
+<img src="images/img0005.png" id="TextArt1" alt="Melty Ice Cream Store" title="Melty Ice Cream Store" width="448" height="47"></div>
+<div id="wb_Shape5">
+<img src="images/img0006.png" id="Shape5" alt="" width="62" height="48"></div>
+<div id="wb_Shape7">
+<img src="images/img0008.png" id="Shape7" alt="" width="62" height="47"></div>
+<div id="wb_Image2">
+<img src="images/Doodle_chocolate_vanilla_cream_milkshake_with_a_straw_sticker_clipart_transparent_illustration_-removebg-preview.png" id="Image2" alt="" width="57" height="102"></div>
+<div id="wb_TextArt3">
+<img src="images/img0009.png" id="TextArt3" alt="“We make bold, comforting flavors made to bring people together, one shared moment at a time.”" title="“We make bold, comforting flavors made to bring people together, one shared moment at a time.”" width="821" height="25"></div>
+<div id="wb_TextArt4">
+<img src="images/img0010.png" id="TextArt4" alt="Flavor is Everything" title="Flavor is Everything" width="516" height="57"></div>
+<a id="Button2" href="./Flavors-Page.html" onmouseover="AnimateCss('Button2', 'transform-pulse', 0, 500);return false;">EXPLORE FLAVORS</a>
+<div id="wb_Shape8">
+<img src="images/img0011.png" id="Shape8" alt="" width="32" height="39"></div>
+<div id="wb_Shape12">
+<img src="images/img0012.png" id="Shape12" alt="" width="20" height="24"></div>
+<div id="wb_Shape9">
+<a href="#" onmouseover="AnimateCss('wb_Shape9', 'jello-vertical', 0, 500);return false;"><img src="images/img0013.png" id="Shape9" alt="" width="32" height="39"></a></div>
+<div id="wb_Shape10">
+<img src="images/img0014.png" id="Shape10" alt="" width="20" height="24"></div>
+<div id="wb_Image3">
+<img src="images/b7d4f4b72451e4dafd9963890de843bd-removebg-preview.png" id="Image3" alt="" width="258" height="258"></div>
+<div id="wb_Image5">
+<img src="images/Lemon1-removebg-preview.png" id="Image5" alt="" width="121" height="232"></div>
+<div id="wb_Image6">
+<img src="images/Lemon1-removebg-preview.png" id="Image6" alt="" width="233" height="447"></div>
+<div id="wb_TextArt2">
+<img src="images/img0016.png" id="TextArt2" alt="ICE CREAM FOR EVERY OCCASION" title="ICE CREAM FOR EVERY OCCASION" width="526" height="34"></div>
+<div id="wb_Line1">
+<img src="images/img0017.png" id="Line1" alt="" width="1574" height="1"></div>
+<div id="wb_Line2">
+<img src="images/img0018.png" id="Line2" alt="" width="1574" height="-4"></div>
+<div id="wb_Shape14">
+<img src="images/img0020.png" id="Shape14" alt="" width="465" height="303"></div>
+<div id="wb_Shape13">
+<img src="images/img0019.png" id="Shape13" alt="" width="165" height="141"></div>
+<div id="wb_Shape27">
+<img src="images/img0021.png" id="Shape27" alt="" width="45" height="44"></div>
+<div id="wb_Shape28">
+<img src="images/img0022.png" id="Shape28" alt="" width="45" height="44"></div>
+<div id="wb_Shape29">
+<img src="images/img0023.png" id="Shape29" alt="" width="45" height="44"></div>
+<div id="wb_TextArt8">
+<img src="images/img0024.png" id="TextArt8" alt="BEST SELLER" title="BEST SELLER" width="132" height="64"></div>
+<div id="wb_Shape16">
+<img src="images/img0025.png" id="Shape16" alt="" width="465" height="303"></div>
+<div id="wb_Shape19">
+<img src="images/img0026.png" id="Shape19" alt="" width="465" height="303"></div>
+<div id="wb_Shape15">
+<img src="images/img0027.png" id="Shape15" alt="" width="165" height="141"></div>
+<div id="wb_Shape20">
+<img src="images/img0028.png" id="Shape20" alt="" width="34" height="26"></div>
+<div id="wb_Shape21">
+<img src="images/img0029.png" id="Shape21" alt="" width="46" height="37"></div>
+<div id="wb_Shape30">
+<img src="images/img0030.png" id="Shape30" alt="" width="34" height="26"></div>
+<div id="wb_TextArt5">
+<img src="images/img0031.png" id="TextArt5" alt="CROWD  PLEASER" title="CROWD  PLEASER" width="133" height="58"></div>
+<div id="wb_Shape17">
+<img src="images/img0032.png" id="Shape17" alt="" width="165" height="141"></div>
+<div id="wb_Shape22">
+<img src="images/img0033.png" id="Shape22" alt="" width="24" height="30"></div>
+<div id="wb_Shape23">
+<img src="images/img0034.png" id="Shape23" alt="" width="32" height="39"></div>
+<div id="wb_TextArt6">
+<img src="images/img0035.png" id="TextArt6" alt="SYMPATHY  COLLECTION" title="SYMPATHY  COLLECTION" width="125" height="80"></div>
+<div id="wb_Image1">
+<img src="images/A_variety_of_different_flavors_of_ice_cream_and_chocolate___Premium_AI-generated_image-removebg-preview.png" id="Image1" alt="" width="462" height="192"></div>
+<div id="wb_Image9">
+<img src="images/A_row_of_ice_creams_with_different_colors_and_fruits_on_them-removebg-preview.png" id="Image9" alt="" width="385" height="385"></div>
+<div id="wb_Image10">
+<img src="images/_Frosty_Friends__Sticker__1_-removebg-preview.png" id="Image10" alt="" width="386" height="386"></div>
+<div id="wb_Carousel1">
+<div id="Carousel1">
+<div class="frame">
+<div id="wb_Shape35">
+<img src="images/img0038.png" id="Shape35" alt="" width="252" height="366"></div>
+<div id="wb_Shape36">
+<img src="images/img0039.png" id="Shape36" alt="" width="252" height="366"></div>
+<div id="wb_Shape37">
+<img src="images/img0040.png" id="Shape37" alt="" width="252" height="366"></div>
+<div id="wb_TextArt11">
+<img src="images/img0262.png" id="TextArt11" alt="Cold Brew with  Coconut Cream" title="Cold Brew with  Coconut Cream" width="202" height="44"></div>
+<input type="submit" id="Button7" onclick="ShowPanel('Cart', event);addToCart('Cold Brew with Coconut Cream', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt12">
+<img src="images/img0263.png" id="TextArt12" alt="Lemon and Blueberries  Parfait" title="Lemon and Blueberries  Parfait" width="217" height="48"></div>
+<input type="submit" id="Button8" onclick="ShowPanel('Cart', event);addToCart('Lemon and Blueberries Parfait', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt13">
+<img src="images/img0264.png" id="TextArt13" alt="Goat Cheese with Red  Cherries" title="Goat Cheese with Red  Cherries" width="206" height="45"></div>
+<input type="submit" id="Button10" onclick="ShowPanel('Cart', event);addToCart('Goat Cheese with Red Cherries', 120);return false;" name="Add to cart" value="BUY">
+</div>
+<div class="frame" style="display:none">
+<div id="wb_Shape24">
+<img src="images/img0046.png" id="Shape24" alt="" width="296" height="366"></div>
+<div id="wb_Shape11">
+<img src="images/img0044.png" id="Shape11" alt="" width="326" height="366"></div>
+<div id="wb_Shape18">
+<img src="images/img0045.png" id="Shape18" alt="" width="320" height="366"></div>
+<div id="wb_TextArt14">
+<img src="images/img0265.png" id="TextArt14" alt="Banana Cream  Pudding" title="Banana Cream  Pudding" width="206" height="45"></div>
+<input type="submit" id="Button11" onclick="ShowPanel('Cart', event);addToCart('Banana Cream Pudding', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt15">
+<img src="images/img0266.png" id="TextArt15" alt="Sweet Cream" title="Sweet Cream" width="206" height="30"></div>
+<input type="submit" id="Button13" onclick="ShowPanel('Cart', event);addToCart('Sweet Cream', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt16">
+<img src="images/img0267.png" id="TextArt16" alt="Butter Cream  Birthday Cake" title="Butter Cream  Birthday Cake" width="206" height="45"></div>
+<input type="submit" id="Button14" onclick="ShowPanel('Cart', event);addToCart('Butter Cream Birthday Cake', 120);return false;" name="Add to cart" value="BUY">
+</div>
+<div class="frame" style="display:none">
+<div id="wb_Shape41">
+<img src="images/img0053.png" id="Shape41" alt="" width="335" height="366"></div>
+<div id="wb_Shape25">
+<img src="images/img0047.png" id="Shape25" alt="" width="252" height="366"></div>
+<div id="wb_Shape26">
+<img src="images/img0048.png" id="Shape26" alt="" width="252" height="366"></div>
+<div id="wb_Shape31">
+<img src="images/img0049.png" id="Shape31" alt="" width="335" height="366"></div>
+<div id="wb_TextArt17">
+<img src="images/img0268.png" id="TextArt17" alt="Maple Soaked  Pancakes" title="Maple Soaked  Pancakes" width="206" height="45"></div>
+<input type="submit" id="Button15" onclick="ShowPanel('Cart', event);addToCart('Maple Soaked Pancakes', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt18">
+<img src="images/img0269.png" id="TextArt18" alt="Dark Chocolate  Truffle" title="Dark Chocolate  Truffle" width="206" height="45"></div>
+<input type="submit" id="Button16" onclick="ShowPanel('Cart', event);addToCart('Dark Chocolate Truffle', 120);return false;" name="Add to cart" value="BUY">
+<input type="submit" id="Button9" onclick="ShowPanel('Cart', event);addToCart('Frose Sorbett', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt19">
+<img src="images/img0270.png" id="TextArt19" alt="Frose Sorbett" title="Frose Sorbett" width="193" height="29"></div>
+</div>
+<div class="frame" style="display:none">
+<div id="wb_Shape32">
+<img src="images/img0050.png" id="Shape32" alt="" width="252" height="366"></div>
+<div id="wb_Shape33">
+<img src="images/img0051.png" id="Shape33" alt="" width="252" height="366"></div>
+<div id="wb_Shape34">
+<img src="images/img0052.png" id="Shape34" alt="" width="252" height="366"></div>
+<input type="submit" id="Button6" onclick="ShowPanel('Cart', event);addToCart('Brown Almond Butter Brittle', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt10">
+<img src="images/img0258.png" id="TextArt10" alt="Brown Almond Butter  Brittle" title="Brown Almond Butter  Brittle" width="206" height="45"></div>
+<div id="wb_TextArt20">
+<img src="images/img0271.png" id="TextArt20" alt="Brambleberry  Crisp" title="Brambleberry  Crisp" width="206" height="57"></div>
+<input type="submit" id="Button18" onclick="ShowPanel('Cart', event);addToCart('Brambleberry Crisp', 120);return false;" name="Add to cart" value="BUY">
+<div id="wb_TextArt21">
+<img src="images/img0272.png" id="TextArt21" alt="Lemon Bar" title="Lemon Bar" width="206" height="31"></div>
+<input type="submit" id="Button19" onclick="ShowPanel('Cart', event);addToCart('Lemon Bar', 120);return false;" name="Add to cart" value="BUY">
+</div>
+</div>
+<div id="Carousel1_back"><a class="carousel-control-prev" role="button"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a></div>
+<div id="Carousel1_next"><a class="carousel-control-next" role="button"><span class="carousel-control-next-icon" aria-hidden="true"></span></a></div>
+</div>
+<div id="wb_Line3">
+<img src="images/img0004.png" id="Line3" alt="" width="1573" height="2"></div>
+<div id="wb_Line4">
+<img src="images/img0037.png" id="Line4" alt="" width="1573" height="-2"></div>
+<div id="wb_TextArt7">
+<img src="images/img0036.png" id="TextArt7" alt="OTHER FAVORITE ICE CREAM" title="OTHER FAVORITE ICE CREAM" width="526" height="34"></div>
+<div id="wb_Line5">
+<img src="images/img0041.png" id="Line5" alt="" width="1573" height="0"></div>
+<div id="wb_TextArt9">
+<img src="images/img0042.png" id="TextArt9" alt="REWARDS AND FREEBIES" title="REWARDS AND FREEBIES" width="526" height="34"></div>
+<div id="wb_Line6">
+<img src="images/img0043.png" id="Line6" alt="" width="1573" height="-2"></div>
+<div id="SlideShow1">
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Bath & Body Works Accessories _ Pumpkin Spice Frappuccino Pocketbac Holder _ Color_ Orange_White _ Size_ Os.jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Bath & Body Works Unisex Bath and body $14_00.jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Buttercream Fake Cake Purse_ Crossbody Bag for Ice Cream Lovers.jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Cake Bag.jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Cone de sorvete de resina em miniatura, Escala fofa, Finja comida para Dollhouse, Play Kitchen Food,.jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Cute Cartoon Women Ice Cream_Cupcake Shape Mini Shoulder Bag Metal Chain.jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Disney Backpack Minnie Ice Cream Mint Green Cherry Blossom Pink Chocolate Brown Icecream Bag Girls' (1).jpg" alt="" title="">
+</div>
+<div class="accordion-panel">
+<img class="image" width="736" height="736" src="images/Donut & Cake Charm Keychain.jpg" alt="" title="">
+</div>
+</div>
+<div id="wb_Text1">
+<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">Sweet perks for a sweet customer</span></div>
+<div id="wb_Text2">
+<span style="color:#FFFFFF;font-family:Arial;font-size:32px;">SPLENDID <br>REWARDS</span></div>
+<div id="wb_Text3">
+<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">Get random rewards as you order frequently in our shop, get surprised as to what is inside on your next time ordering one of our delightful ice cream treats just for you!!</span></div>
+<div id="wb_Shape4">
+<img src="images/img0015.png" id="Shape4" alt="" width="1578" height="64"></div>
+<div id="wb_Image12">
+<img src="images/instagram-logo-icon-transparent-background-free-png-removebg-preview.png" id="Image12" alt="" width="77" height="77"></div>
+<div id="wb_Image13">
+<img src="images/facebook-logo-facebook-logo-transparent-facebook-icon-transparent-free-free-png-removebg-preview (1).png" id="Image13" alt="" width="73" height="73"></div>
+<div id="wb_Image14">
+<img src="images/x logo.jpg" id="Image14" alt="" width="62" height="62"></div>
+<div id="Cart">
+<div id="wb_Text19">
+<span style="color:#000000;font-family:Arial;font-size:27px;">ICE CREAM CART</span></div>
+<!-- Item1 -->
+<div id="Html1">
+<h3>Cart (<span id="cartCount">0</span>)</h3>
+
+<!-- Cart container -->
+<div id="cartItems">
+    <!-- Items will be dynamically inserted here -->
+</div>
+
+<p><strong>Total: ₱<span id="total">0</span></strong></p></div>
+<hr id="HorizontalLine7">
+<hr id="HorizontalLine8">
+<input type="submit" id="Buy" onclick="ShowObjectWithEffect('Adress_Popup', 1, 'slidedown', 400);return false;" name="Buy" value="Buy">
+<div id="wb_Image15">
+<img src="images/Shopping_cart_icon_in_comic_style_trolley_cartoon_vector_illustration_on_white_isolated_background_basket_splash_effect_business_concept___Premium_Vector-removebg-preview.png" id="Image15" alt="" width="98" height="98"></div>
+</div>
+<input type="submit" id="Button1" onclick="ShowPanel('Cart', event);addToCart('Crowd Pleaser', 90);return false;" name="Add to cart" value="BUY">
+<input type="submit" id="Button3" onclick="ShowPanel('Cart', event);addToCart('Sympathy Collection', 100);return false;" name="Add to cart" value="BUY">
+<div id="wb_Shape6">
+<img src="images/img0259.png" id="Shape6" alt="" width="175" height="112"></div>
+<div id="wb_Image7">
+<img src="images/Vibrant_Ice_Cream_Milkshake_Glasses_Clipart__Vibrant_Ice_Cream_Milkshake_Glasses__Clipart_PNG_Transparent_Image_and_Clipart_for_Free_Download-removebg-preview.png" id="Image7" alt="" width="449" height="449"></div>
+<input type="submit" id="Button5" onclick="ShowPanel('Cart', event);addToCart('Best Seller', 80);return false;" name="Add to cart" value="BUY">
+<div id="wb_Shape38">
+<img src="images/img0260.png" id="Shape38" alt="" width="175" height="112"></div>
+<div id="wb_Shape39">
+<img src="images/img0261.png" id="Shape39" alt="" width="205" height="128"></div>
+<div id="wb_Shape40">
+<img src="images/img0056.png" id="Shape40" alt="" width="196" height="61"></div>
+<div id="wb_TextArt22">
+<a href="./Flavors-Page.html"><img class="hover" src="images/img0195_hover.png" alt="SHOP" title="SHOP" width="111" height="34" style="border-width:0;width:111px;height:34px;"><span class="default"><img src="images/img0195.png" id="TextArt22" alt="SHOP" title="SHOP" width="111" height="34"></span></a></div>
+<div id="wb_Shape42">
+<img src="images/img0273.png" id="Shape42" alt="" width="196" height="61"></div>
+<div id="wb_TextArt23">
+<a href="" onclick="ShowPanel('Cart', event);return false;"><img class="hover" src="images/img0274_hover.png" alt="CART" title="CART" width="99" height="35" style="border-width:0;width:99px;height:35px;"><span class="default"><img src="images/img0274.png" id="TextArt23" alt="CART" title="CART" width="99" height="35"></span></a></div>
+<div id="wb_Image4">
+<img src="images/Palmera-removebg-preview.png" id="Image4" alt="" width="316" height="316"></div>
+<div id="wb_Image8">
+<img src="images/Palmera-removebg-preview.png" id="Image8" alt="" width="524" height="524"></div>
+<div id="Adress_Popup">
+<div id="Adress_Popup_Container">
+<textarea name="Adress" id="Adress" rows="1" cols="30" spellcheck="false" placeholder="House/Unit No., Street Name, Barangay, City, Province, ZIP Code, Contact Number"></textarea>
+<div id="wb_TextArt24">
+<img src="images/img0082.png" id="TextArt24" alt="ENTER YOUR ADRESS FOR DELIVERY" title="ENTER YOUR ADRESS FOR DELIVERY" width="365" height="21"></div>
+<a id="Button4" href="./Flavors-Page.html" onclick="ShowObject('Adress_Popup', 0);ShowObjectWithEffect('Thank_You', 1, 'slidedown', 400);document.querySelector('#Adress').value='';return false;">OK</a>
+</div>
+</div>
+<div id="Thank_You">
+<div id="Thank_You_Container">
+<div id="wb_TextArt25">
+<img src="images/img0083.png" id="TextArt25" alt="Thank you for buying in our shop  we appreciate your patronage!" title="Thank you for buying in our shop  we appreciate your patronage!" width="365" height="79"></div>
+<a id="CLOSE" href="./Flavors-Page.html" onclick="ShowObject('Thank_You', 0);return false;">CLOSE</a>
+</div>
+</div>
+</body>
+</html>

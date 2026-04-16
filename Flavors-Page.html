@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Melty Ice Cream Store (Flavors)</title>
+<meta name="generator" content="WYSIWYG Web Builder 20 - https://www.wysiwygwebbuilder.com">
+<link href="Melty_Ice_Cream_Store.css" rel="stylesheet">
+<link href="Flavors-Page.css" rel="stylesheet">
+<script src="jquery-3.7.1.min.js"></script>
+<script src="wb.panel.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="wb.stickylayer.min.js"></script>
+<script src="wwb20.min.js"></script>
+<script>
+$(document).ready(function()
+{
+   $("#cartPanel").panel({animate: true, animationDuration: 200, animationEasing: 'linear', dismissible: true, display: 'push', position: 'right'});
+   $("#Adress_Popup").stickylayer({orientation: 9, position: [0, 0], delay: 250});
+   $("#Thank_You").stickylayer({orientation: 9, position: [0, 0], delay: 250});
+});
+</script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) existing.qty += 1;
+    else cart.push({ name, price, qty: 1 });
+    saveCart();
+}
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+}
+
+function updateCart() {
+    const cartDiv = document.getElementById("cartItems");
+    const totalSpan = document.getElementById("total");
+    const countSpan = document.getElementById("cartCount");
+
+    cartDiv.innerHTML = "";
+    let total = 0, count = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        count += item.qty;
+
+        cartDiv.innerHTML += `
+        <div style="margin-bottom:10px;">
+            <strong>${item.name}</strong><br>
+            ₱${item.price}<br>
+            <button onclick="changeQty(${index}, -1)">−</button>
+            ${item.qty}
+            <button onclick="changeQty(${index}, 1)">+</button>
+            <br>
+            <small style="cursor:pointer; text-decoration:underline;" onclick="removeItem(${index})">Remove</small>
+        </div>
+        `;
+    });
+
+    totalSpan.innerText = total;
+    countSpan.innerText = count;
+}
+
+function changeQty(index, delta) {
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) cart.splice(index, 1);
+    saveCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    saveCart();
+}
+
+window.onload = updateCart;
+</script>
+
+</head>
+<body>
+<div id="wb_Shape1" style="position:absolute;left:0px;top:0px;width:1577px;height:101px;z-index:11;">
+<img src="images/img0007.png" id="Shape1" alt="" width="1577" height="101" style="width:1577px;height:101px;"></div>
+<div id="wb_Image2" style="position:absolute;left:23px;top:8px;width:56px;height:84px;z-index:12;">
+<a href="./Home.html"><img src="images/Doodle_chocolate_vanilla_cream_milkshake_with_a_straw_sticker_clipart_transparent_illustration_-removebg-preview.png" id="Image2" alt="" width="56" height="100"></a></div>
+<div id="wb_TextArt1" style="position:absolute;left:109px;top:29px;width:448px;height:47px;z-index:13;">
+<a href="./Home.html"><img src="images/img0057.png" id="TextArt1" alt="Melty Ice Cream Store" title="Melty Ice Cream Store" width="448" height="47" style="width:448px;height:47px;"></a></div>
+<div id="wb_Shape3" style="position:absolute;left:0px;top:102px;width:1577px;height:339px;z-index:14;">
+<img src="images/img0058.png" id="Shape3" alt="" width="1577" height="339" style="width:1577px;height:339px;"></div>
+<div id="wb_Shape2" style="position:absolute;left:0px;top:441px;width:1577px;height:2225px;z-index:15;">
+<img src="images/img0059.png" id="Shape2" alt="" width="1577" height="2225" style="width:1577px;height:2225px;"></div>
+<div id="wb_Text1" style="position:absolute;left:630px;top:165px;width:312px;height:48px;z-index:16;">
+<span style="color:#000000;font-family:Arial;font-size:43px;"><strong>ALL FLAVORS</strong></span></div>
+<div id="wb_Text2" style="position:absolute;left:488px;top:248px;width:608px;height:36px;text-align:center;z-index:17;">
+<span style="color:#000000;font-family:Arial;font-size:16px;">Our order minimum is 5 pints. But after that it's up to you. Our boxes are designed to neatly hold up to 6, 9, or 18 pints.</span></div>
+<hr id="HorizontalLine1" style="position:absolute;left:253px;top:320px;width:1028px;z-index:18;">
+<div id="wb_Image1" style="position:absolute;left:263px;top:341px;width:62px;height:47px;z-index:19;">
+<img src="images/pixabay002.png" id="Image1" alt="https://pixabay.com/users/982670" title="https://pixabay.com/users/982670" width="62" height="48"></div>
+<div id="wb_Text3" style="position:absolute;left:325px;top:357px;width:230px;height:18px;z-index:20;">
+<span style="color:#000000;font-family:Arial;font-size:16px;">Guaranteed frozen delivery</span></div>
+<div id="wb_Text4" style="position:absolute;left:681px;top:355px;width:248px;height:18px;z-index:21;">
+<span style="color:#000000;font-family:Arial;font-size:16px;">Flat-rate shipping nationwide</span></div>
+<div id="wb_Text5" style="position:absolute;left:1060px;top:355px;width:194px;height:18px;z-index:22;">
+<span style="color:#000000;font-family:Arial;font-size:16px;">Instagram worthy unboxing</span></div>
+<div id="wb_Image3" style="position:absolute;left:613px;top:345px;width:58px;height:39px;opacity:0.89;z-index:23;">
+<img src="images/pixabay003.png" id="Image3" alt="https://pixabay.com/users/5229782" title="https://pixabay.com/users/5229782" width="58" height="39"></div>
+<div id="wb_Image4" style="position:absolute;left:984px;top:331px;width:66px;height:66px;z-index:24;">
+<img src="images/pixabay004.png" id="Image4" alt="https://pixabay.com/users/4246915" title="https://pixabay.com/users/4246915" width="66" height="66"></div>
+<div id="wb_Shape4" style="position:absolute;left:244px;top:474px;width:206px;height:60px;z-index:25;">
+<img src="images/img0062.png" id="Shape4" alt="" width="206" height="60" style="width:206px;height:60px;"></div>
+<div id="wb_Shape5" style="position:absolute;left:536px;top:474px;width:208px;height:60px;z-index:26;">
+<a href="./Most-Popular.html"><img class="hover" src="images/img0063_hover.png" alt="" width="208" height="60" style="border-width:0;width:208px;height:60px;"><span class="default"><img src="images/img0063.png" id="Shape5" alt="" width="208" height="60" style="width:208px;height:60px;"></span></a></div>
+<div id="wb_TextArt2" style="position:absolute;left:267px;top:492px;width:159px;height:25px;z-index:27;">
+<img src="images/img0066.png" id="TextArt2" alt="ALL FLAVORS" title="ALL FLAVORS" width="159" height="25" style="width:159px;height:25px;"></div>
+<div id="wb_TextArt3" style="position:absolute;left:559px;top:492px;width:159px;height:25px;z-index:28;">
+<a href="./Most-Popular.html"><img class="hover" src="images/img0067_hover.png" alt="MOST POPULAR" title="MOST POPULAR" width="159" height="25" style="border-width:0;width:159px;height:25px;"><span class="default"><img src="images/img0067.png" id="TextArt3" alt="MOST POPULAR" title="MOST POPULAR" width="159" height="25" style="width:159px;height:25px;"></span></a></div>
+<div id="wb_Shape8" style="position:absolute;left:1315px;top:26px;width:62px;height:48px;z-index:29;">
+<img src="images/img0060.png" id="Shape8" alt="" width="62" height="48" style="width:62px;height:48px;"></div>
+<div id="wb_Image12" style="position:absolute;left:1308px;top:12px;width:77px;height:77px;z-index:30;">
+<img src="images/instagram-logo-icon-transparent-background-free-png-removebg-preview.png" id="Image12" alt="" width="77" height="77"></div>
+<div id="wb_Shape9" style="position:absolute;left:1402px;top:27px;width:62px;height:47px;z-index:31;">
+<img src="images/img0061.png" id="Shape9" alt="" width="62" height="47" style="width:62px;height:47px;"></div>
+<div id="wb_Image13" style="position:absolute;left:1397px;top:22px;width:73px;height:57px;z-index:32;">
+<img src="images/facebook-logo-facebook-logo-transparent-facebook-icon-transparent-free-free-png-removebg-preview (1).png" id="Image13" alt="" width="73" height="73"></div>
+<div id="wb_Image14" style="position:absolute;left:1487px;top:25px;width:62px;height:50px;z-index:33;">
+<img src="images/x logo.jpg" id="Image14" alt="" width="62" height="62"></div>
+<div id="wb_Shape10" style="position:absolute;left:219px;top:626px;width:248px;height:351px;z-index:34;">
+<img src="images/img0070.png" id="Shape10" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<hr id="HorizontalLine2" style="position:absolute;left:89px;top:567px;width:1411px;z-index:35;">
+<div id="wb_Shape11" style="position:absolute;left:517px;top:626px;width:248px;height:351px;z-index:36;">
+<img src="images/img0071.png" id="Shape11" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_Shape12" style="position:absolute;left:824px;top:626px;width:248px;height:351px;z-index:37;">
+<img src="images/img0072.png" id="Shape12" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_Shape13" style="position:absolute;left:1114px;top:626px;width:248px;height:351px;z-index:38;">
+<img src="images/img0073.png" id="Shape13" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_TextArt6" style="position:absolute;left:263px;top:1016px;width:165px;height:25px;z-index:39;">
+<img src="images/img0074.png" id="TextArt6" alt="Sweet Cream" title="Sweet Cream" width="165" height="25" style="width:165px;height:25px;"></div>
+<div id="wb_TextArt7" style="position:absolute;left:534px;top:1012px;width:220px;height:34px;z-index:40;">
+<img src="images/img0075.png" id="TextArt7" alt="Bay Leaf Cheese Cake" title="Bay Leaf Cheese Cake" width="220" height="34" style="width:220px;height:34px;"></div>
+<div id="wb_TextArt8" style="position:absolute;left:839px;top:1005px;width:226px;height:50px;z-index:41;">
+<img src="images/img0076.png" id="TextArt8" alt="Goat Cheese with Red  Cherries" title="Goat Cheese with Red  Cherries" width="226" height="50" style="width:226px;height:50px;"></div>
+<div id="wb_TextArt9" style="position:absolute;left:1137px;top:1003px;width:203px;height:52px;z-index:42;">
+<img src="images/img0077.png" id="TextArt9" alt="White Chocolate  Peppermint" title="White Chocolate  Peppermint" width="203" height="52" style="width:203px;height:52px;"></div>
+<div id="wb_Text6" style="position:absolute;left:1096px;top:1083px;width:290px;height:27px;text-align:center;z-index:43;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">A swirl of pink and white peppermint <br>with white chocolate freckles.</span></div>
+<div id="wb_Text7" style="position:absolute;left:807px;top:1083px;width:290px;height:27px;text-align:center;z-index:44;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">Mouthwatering and rich, it’s like a <br>scoopable cherry cheesecake.</span></div>
+<div id="wb_Text8" style="position:absolute;left:501px;top:1083px;width:290px;height:40px;text-align:center;z-index:45;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">A refreshing and subtly herbaceous cream<br> cheese ice cream with a crisp graham <br>cracker swirl.</span></div>
+<div id="wb_Text9" style="position:absolute;left:193px;top:1080px;width:290px;height:58px;text-align:center;z-index:46;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">A swirl of white peppermint with white Fresh dairy sweetened with just enough cane sugar. Minimal and beautiful — like frozen whipped cream.</span><span style="color:#000000;font-family:Arial;font-size:16px;"><br></span></div>
+<div id="wb_TextArt10" style="position:absolute;left:304px;top:1163px;width:61px;height:12px;z-index:47;">
+<img src="images/img0078.png" id="TextArt10" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt11" style="position:absolute;left:616px;top:1163px;width:61px;height:12px;z-index:48;">
+<img src="images/img0079.png" id="TextArt11" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt12" style="position:absolute;left:922px;top:1163px;width:61px;height:12px;z-index:49;">
+<img src="images/img0080.png" id="TextArt12" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt13" style="position:absolute;left:1211px;top:1163px;width:61px;height:12px;z-index:50;">
+<img src="images/img0081.png" id="TextArt13" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<hr id="HorizontalLine3" style="position:absolute;left:94px;top:1212px;width:1393px;z-index:51;">
+<div id="wb_Shape14" style="position:absolute;left:838px;top:1270px;width:248px;height:351px;z-index:52;">
+<img src="images/img0096.png" id="Shape14" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_Shape15" style="position:absolute;left:1128px;top:1270px;width:248px;height:351px;z-index:53;">
+<img src="images/img0097.png" id="Shape15" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_TextArt14" style="position:absolute;left:874px;top:1651px;width:188px;height:28px;z-index:54;">
+<img src="images/img0098.png" id="TextArt14" alt="Snow Cone Sorbett" title="Snow Cone Sorbett" width="188" height="28" style="width:188px;height:28px;"></div>
+<div id="wb_TextArt15" style="position:absolute;left:1165px;top:1651px;width:182px;height:32px;z-index:55;">
+<img src="images/img0099.png" id="TextArt15" alt="Orange Dreamsickle" title="Orange Dreamsickle" width="182" height="32" style="width:182px;height:32px;"></div>
+<div id="wb_Text10" style="position:absolute;left:818px;top:1714px;width:290px;height:27px;text-align:center;z-index:56;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">A far-out twist of blue brambleberry, <br>watermelon, and pink lemonade sorbets.</span></div>
+<div id="wb_Text11" style="position:absolute;left:1115px;top:1714px;width:290px;height:27px;text-align:center;z-index:57;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">Juicy orange ice cream with vanilla<br> custard and burnt orange caramel.</span></div>
+<div id="wb_TextArt16" style="position:absolute;left:936px;top:1794px;width:61px;height:12px;z-index:58;">
+<img src="images/img0100.png" id="TextArt16" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt17" style="position:absolute;left:1225px;top:1790px;width:61px;height:12px;z-index:59;">
+<img src="images/img0101.png" id="TextArt17" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_Shape16" style="position:absolute;left:181px;top:1249px;width:557px;height:629px;z-index:60;">
+<img src="images/img0102.png" id="Shape16" alt="" width="557" height="629" style="width:557px;height:629px;"></div>
+<div id="wb_Image5" style="position:absolute;left:364px;top:1291px;width:26px;height:37px;z-index:61;">
+<img src="images/pixabay006.png" id="Image5" alt="https://pixabay.com/users/1005143" title="https://pixabay.com/users/1005143" width="26" height="37"></div>
+<hr id="HorizontalLine4" style="position:absolute;left:396px;top:1310px;width:17px;z-index:62;">
+<div id="wb_Image6" style="position:absolute;left:416px;top:1290px;width:38px;height:38px;opacity:0.89;z-index:63;">
+<img src="images/pixabay007.png" id="Image6" alt="https://pixabay.com/users/28911" title="https://pixabay.com/users/28911" width="38" height="38"></div>
+<div id="wb_Image7" style="position:absolute;left:480px;top:1290px;width:38px;height:37px;opacity:0.89;z-index:64;">
+<img src="images/pixabay010.png" id="Image7" alt="https://pixabay.com/users/30363" title="https://pixabay.com/users/30363" width="38" height="38"></div>
+<hr id="HorizontalLine5" style="position:absolute;left:457px;top:1309px;width:17px;z-index:65;">
+<div id="wb_TextArt18" style="position:absolute;left:273px;top:1352px;width:349px;height:95px;z-index:66;">
+<img src="images/img0103.png" id="TextArt18" alt="Ice Cream In the Mail?Yes As easy as that!" title="Ice Cream In the Mail?Yes As easy as that!" width="349" height="95" style="width:349px;height:95px;"></div>
+<div id="wb_Image8" style="position:absolute;left:233px;top:1492px;width:62px;height:47px;z-index:67;">
+<img src="images/pixabay002.png" id="Image8" alt="https://pixabay.com/users/982670" title="https://pixabay.com/users/982670" width="62" height="48"></div>
+<div id="wb_Image10" style="position:absolute;left:231px;top:1725px;width:66px;height:66px;z-index:68;">
+<img src="images/pixabay004.png" id="Image10" alt="https://pixabay.com/users/4246915" title="https://pixabay.com/users/4246915" width="66" height="66"></div>
+<div id="wb_Image9" style="position:absolute;left:235px;top:1619px;width:58px;height:39px;opacity:0.89;z-index:69;">
+<img src="images/pixabay003.png" id="Image9" alt="https://pixabay.com/users/5229782" title="https://pixabay.com/users/5229782" width="58" height="39"></div>
+<div id="wb_Text12" style="position:absolute;left:302px;top:1498px;width:340px;height:36px;z-index:70;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">Guaranteed frozen delivery. Pints arrive in an insulated box with plenty of dry ice.</span></div>
+<div id="wb_Text13" style="position:absolute;left:307px;top:1619px;width:340px;height:36px;z-index:71;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">Flat-rate shipping nationwide. No matter how many pints you order.</span></div>
+<div id="wb_Text14" style="position:absolute;left:309px;top:1740px;width:340px;height:36px;z-index:72;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">Instagram-worthy unboxing. Pints are packaged with an artful attention to detail.</span></div>
+<div id="wb_Shape17" style="position:absolute;left:214px;top:1980px;width:248px;height:351px;z-index:73;">
+<img src="images/img0104.png" id="Shape17" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_Shape18" style="position:absolute;left:512px;top:1980px;width:248px;height:351px;z-index:74;">
+<img src="images/img0105.png" id="Shape18" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_Shape19" style="position:absolute;left:819px;top:1980px;width:248px;height:351px;z-index:75;">
+<img src="images/img0106.png" id="Shape19" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_Shape20" style="position:absolute;left:1109px;top:1980px;width:248px;height:351px;z-index:76;">
+<img src="images/img0107.png" id="Shape20" alt="" width="248" height="351" style="width:248px;height:351px;"></div>
+<div id="wb_TextArt19" style="position:absolute;left:1134px;top:2370px;width:205px;height:30px;z-index:77;">
+<img src="images/img0108.png" id="TextArt19" alt="Banana Cream Pudding" title="Banana Cream Pudding" width="205" height="30" style="width:205px;height:30px;"></div>
+<div id="wb_TextArt20" style="position:absolute;left:851px;top:2372px;width:198px;height:28px;z-index:78;">
+<img src="images/img0109.png" id="TextArt20" alt="High-Five Candy Bar " title="High-Five Candy Bar " width="198" height="28" style="width:198px;height:28px;"></div>
+<div id="wb_TextArt21" style="position:absolute;left:529px;top:2372px;width:231px;height:24px;z-index:79;">
+<img src="images/img0110.png" id="TextArt21" alt="Maple Soaked Pancakes" title="Maple Soaked Pancakes" width="231" height="24" style="width:231px;height:24px;"></div>
+<div id="wb_TextArt22" style="position:absolute;left:258px;top:2373px;width:165px;height:25px;z-index:80;">
+<img src="images/img0111.png" id="TextArt22" alt="Powdered Jelly" title="Powdered Jelly" width="165" height="25" style="width:165px;height:25px;"></div>
+<div id="wb_Text15" style="position:absolute;left:188px;top:2434px;width:290px;height:45px;text-align:center;z-index:81;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">Vanilla custard, raspberry jelly, <br>and a brown sugar.</span><span style="color:#000000;font-family:Arial;font-size:16px;"><br></span></div>
+<div id="wb_Text16" style="position:absolute;left:496px;top:2434px;width:290px;height:40px;text-align:center;z-index:82;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">A refreshing and subtly herbaceous cream cheese ice cream with a crisp graham cracker swirl.Fluffy pancakes in salted butter and maple syrup creams.</span></div>
+<div id="wb_Text17" style="position:absolute;left:1096px;top:2435px;width:290px;height:27px;text-align:center;z-index:83;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">Real bananas, ultra-rich coconut cream, <br>and scratch-made vanilla wafers.</span></div>
+<div id="wb_Text18" style="position:absolute;left:802px;top:2435px;width:290px;height:27px;text-align:center;z-index:84;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:12px;">Peanut butter, caramel, chocolate, <br>and pretzels in perfect harmony.</span></div>
+<div id="wb_TextArt23" style="position:absolute;left:299px;top:2517px;width:61px;height:12px;z-index:85;">
+<img src="images/img0112.png" id="TextArt23" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt24" style="position:absolute;left:611px;top:2517px;width:61px;height:12px;z-index:86;">
+<img src="images/img0113.png" id="TextArt24" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt25" style="position:absolute;left:917px;top:2517px;width:61px;height:12px;z-index:87;">
+<img src="images/img0114.png" id="TextArt25" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<div id="wb_TextArt26" style="position:absolute;left:1206px;top:2517px;width:61px;height:12px;z-index:88;">
+<img src="images/img0115.png" id="TextArt26" alt="₱120.0" title="₱120.0" width="61" height="12" style="width:61px;height:12px;"></div>
+<input type="submit" id="Button5" onclick="ShowPanel('cartPanel', event);addToCart('Sweet Cream', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:400px;top:928px;width:52px;height:37px;z-index:89;">
+<div id="wb_Shape21" style="position:absolute;left:0px;top:2666px;width:1577px;height:67px;z-index:90;">
+<img src="images/img0116.png" id="Shape21" alt="" width="1577" height="67" style="width:1577px;height:67px;"></div>
+<div id="wb_Shape6" style="position:absolute;left:842px;top:474px;width:208px;height:60px;z-index:91;">
+<a href="./Dairy-Free.html"><img class="hover" src="images/img0064_hover.png" alt="" width="208" height="60" style="border-width:0;width:208px;height:60px;"><span class="default"><img src="images/img0064.png" id="Shape6" alt="" width="208" height="60" style="width:208px;height:60px;"></span></a></div>
+<div id="wb_TextArt4" style="position:absolute;left:867px;top:492px;width:159px;height:25px;z-index:92;">
+<a href="./Dairy-Free.html"><img class="hover" src="images/img0065_hover.png" alt="DAIRY-FREE" title="DAIRY-FREE" width="159" height="25" style="border-width:0;width:159px;height:25px;"><span class="default"><img src="images/img0065.png" id="TextArt4" alt="DAIRY-FREE" title="DAIRY-FREE" width="159" height="25" style="width:159px;height:25px;"></span></a></div>
+<div id="wb_Shape7" style="position:absolute;left:1117px;top:474px;width:228px;height:60px;z-index:93;">
+<a href="./Gluten-Free.html"><img class="hover" src="images/img0068_hover.png" alt="" width="228" height="60" style="border-width:0;width:228px;height:60px;"><span class="default"><img src="images/img0068.png" id="Shape7" alt="" width="228" height="60" style="width:228px;height:60px;"></span></a></div>
+<div id="wb_TextArt5" style="position:absolute;left:1132px;top:492px;width:194px;height:25px;z-index:94;">
+<a href="./Gluten-Free.html"><img class="hover" src="images/img0069_hover.png" alt="GLUTEN-FREE" title="GLUTEN-FREE" width="194" height="25" style="border-width:0;width:194px;height:25px;"><span class="default"><img src="images/img0069.png" id="TextArt5" alt="GLUTEN-FREE" title="GLUTEN-FREE" width="194" height="25" style="width:194px;height:25px;"></span></a></div>
+<input type="submit" id="Button2" onclick="ShowPanel('cartPanel', event);addToCart('Bay Leaf Cheese Cake', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:702px;top:928px;width:52px;height:37px;z-index:95;">
+<input type="submit" id="Button3" onclick="ShowPanel('cartPanel', event);addToCart('Goat Cheese with Red Cherries', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:1007px;top:928px;width:52px;height:37px;z-index:96;">
+<input type="submit" id="Button4" onclick="ShowPanel('cartPanel', event);addToCart('White Chocolate Peppermint', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:1304px;top:928px;width:52px;height:37px;z-index:97;">
+<input type="submit" id="Button1" onclick="ShowPanel('cartPanel', event);addToCart('Snow Cone Sorbett', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:1027px;top:1573px;width:52px;height:37px;z-index:98;">
+<input type="submit" id="Button6" onclick="ShowPanel('cartPanel', event);addToCart('Orange Dreamsickle', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:1316px;top:1575px;width:52px;height:37px;z-index:99;">
+<input type="submit" id="Button7" onclick="ShowPanel('cartPanel', event);addToCart('Powdered Jelly', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:401px;top:2283px;width:52px;height:37px;z-index:100;">
+<input type="submit" id="Button8" onclick="ShowPanel('cartPanel', event);addToCart('Maple Soaked Pancakes', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:700px;top:2283px;width:52px;height:37px;z-index:101;">
+<input type="submit" id="Button9" onclick="ShowPanel('cartPanel', event);addToCart('High-Five Candy Bar', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:1005px;top:2284px;width:52px;height:37px;z-index:102;">
+<input type="submit" id="Button10" onclick="ShowPanel('cartPanel', event);addToCart('Banana Cream Pudding', 120);return false;" name="Add to cart" value="BUY" style="position:absolute;left:1297px;top:2285px;width:52px;height:37px;z-index:103;">
+<div id="wb_Shape40" style="position:absolute;left:728px;top:20px;width:196px;height:61px;z-index:104;">
+<img src="images/img0054.png" id="Shape40" alt="" width="196" height="61" style="width:196px;height:61px;"></div>
+<div id="wb_TextArt27" style="position:absolute;left:773px;top:33px;width:111px;height:34px;z-index:105;">
+<a href="./Flavors-Page.html"><img class="hover" src="images/img0055_hover.png" alt="SHOP" title="SHOP" width="111" height="34" style="border-width:0;width:111px;height:34px;"><span class="default"><img src="images/img0055.png" id="TextArt27" alt="SHOP" title="SHOP" width="111" height="34" style="width:111px;height:34px;"></span></a></div>
+<div id="wb_Shape42" style="position:absolute;left:1015px;top:20px;width:196px;height:61px;z-index:106;">
+<img src="images/img0196.png" id="Shape42" alt="" width="196" height="61" style="width:196px;height:61px;"></div>
+<div id="wb_TextArt28" style="position:absolute;left:1065px;top:32px;width:99px;height:35px;z-index:107;">
+<a href="" onclick="ShowPanel('cartPanel', event);return false;"><img class="hover" src="images/img0197_hover.png" alt="CART" title="CART" width="99" height="35" style="border-width:0;width:99px;height:35px;"><span class="default"><img src="images/img0197.png" id="TextArt28" alt="CART" title="CART" width="99" height="35" style="width:99px;height:35px;"></span></a></div>
+<hr id="HorizontalLine6" style="position:absolute;left:90px;top:1923px;width:1393px;z-index:108;">
+<div id="cartPanel" style="overflow:hidden;text-align:left;">
+<div id="wb_Text19" style="position:absolute;left:97px;top:41px;width:293px;height:30px;z-index:0;">
+<span style="color:#000000;font-family:Arial;font-size:27px;">ICE CREAM CART</span></div>
+<!-- Item1 -->
+<div id="Html1" style="position:absolute;left:38px;top:102px;width:402px;height:453px;overflow:auto;z-index:1">
+<h3>Cart (<span id="cartCount">0</span>)</h3>
+
+<!-- Cart container -->
+<div id="cartItems" style="
+    border:1px solid #ccc; 
+    padding:10px; 
+    max-width:300px; 
+    max-height:300px;      /* maximum height of cart */
+    overflow-y:auto;        /* vertical scrollbar when items exceed height */
+    min-height:50px;
+">
+    <!-- Items will be dynamically inserted here -->
+</div>
+
+<p><strong>Total: ₱<span id="total">0</span></strong></p>
+</div>
+<hr id="HorizontalLine7" style="position:absolute;left:29px;top:77px;width:428px;z-index:2;">
+<hr id="HorizontalLine8" style="position:absolute;left:25px;top:582px;width:428px;z-index:3;">
+<input type="submit" id="Button12" onclick="ShowObjectWithEffect('Adress_Popup', 1, 'slidedown', 400);return false;" name="Buy" value="Buy" style="position:absolute;left:157px;top:598px;width:160px;height:48px;z-index:4;">
+<div id="wb_Image15" style="position:absolute;left:5px;top:0px;width:98px;height:98px;z-index:5;">
+<img src="images/Shopping_cart_icon_in_comic_style_trolley_cartoon_vector_illustration_on_white_isolated_background_basket_splash_effect_business_concept___Premium_Vector-removebg-preview.png" id="Image15" alt="" width="98" height="98"></div>
+</div>
+<div id="Adress_Popup" style="position:absolute;overflow:hidden;text-align:center;visibility:hidden;left:588px;top:2893px;width:414px;height:230px;z-index:110;">
+<div id="Adress_Popup_Container" style="width:412px;position:relative;margin-left:auto;margin-right:auto;text-align:left;">
+<textarea name="Adress" id="Adress" style="position:absolute;left:42px;top:53px;width:320px;height:38px;z-index:6;" rows="1" cols="30" spellcheck="false" placeholder="House/Unit No., Street Name, Barangay, City, Province, ZIP Code, Contact Number"></textarea>
+<div id="wb_TextArt29" style="position:absolute;left:28px;top:19px;width:365px;height:21px;z-index:7;">
+<img src="images/img0084.png" id="TextArt29" alt="ENTER YOUR ADRESS FOR DELIVERY" title="ENTER YOUR ADRESS FOR DELIVERY" width="365" height="21" style="width:365px;height:21px;"></div>
+<a id="Button11" href="./Flavors-Page.html" onclick="ShowObject('Adress_Popup', 0);ShowObjectWithEffect('Thank_You', 1, 'slidedown', 400);document.querySelector('#Adress').value='';return false;" style="position:absolute;left:121px;top:125px;width:173px;height:61px;z-index:8;">OK</a>
+</div>
+</div>
+<div id="Thank_You" style="position:absolute;overflow:hidden;text-align:center;visibility:hidden;left:591px;top:3159px;width:414px;height:230px;z-index:111;">
+<div id="Thank_You_Container" style="width:412px;position:relative;margin-left:auto;margin-right:auto;text-align:left;">
+<div id="wb_TextArt30" style="position:absolute;left:25px;top:38px;width:365px;height:79px;z-index:9;">
+<img src="images/img0085.png" id="TextArt30" alt="Thank you for buying in our shop  we appreciate your patronage!" title="Thank you for buying in our shop  we appreciate your patronage!" width="365" height="79" style="width:365px;height:79px;"></div>
+<a id="Button17" href="./Flavors-Page.html" onclick="ShowObject('Thank_You', 0);return false;" style="position:absolute;left:118px;top:137px;width:173px;height:61px;z-index:10;">CLOSE</a>
+</div>
+</div>
+</body>
+</html>
